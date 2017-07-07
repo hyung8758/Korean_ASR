@@ -9,7 +9,7 @@
 
 
 # Kaldi directory ./kaldi
-kaldi=/Users/hyungwonyang/kaldi
+kaldi=/home/kaldi
 # FA data directory
 data_dir=data
 # result direcotry
@@ -29,18 +29,27 @@ if [ $# -ne 1 ]; then
    echo "Model for decoding should be provided." && exit 1
 fi
 model_name=$1
-if [ $model_name == "krs" ] || [ $model_name == "mz" ] || [ $model_name == "sj" ]; then
+if [ $model_name == "krs" ] || [ $model_name == "diy" ] ; then
 	echo "ASR model: $model_name"
 else
 	echo "Model name: $model_name is not present in the model directory."
 	echo "Place the model directory into ./models folder and reactivate this code." 
 	echo "Provided models are as follows: " 
-	echo "1. krs : Language model based on Korean Readspeech corpus."
-	echo "2. mz  : Language model based on MediaZen corpus."
-	echo "3. sj  : Language model based on Sejong corpus." && exit 1
+	echo "1. krs : Trained model based on Korean Readspeech corpus."
+	echo "2. diy : Trained model based on your own corpus."
+ && exit 1
 fi
 # model directory
 model_dir=models/$model_name
+
+if [ $model_name == "diy" ]; then
+	data_count=`ls models/diy | wc -w`
+	if [ $data_count -ne 4 ]; then
+		echo "ERROR: diy model is selected, but it does not contain four major files: final.mat, final.mdl, HCLG.fst, and words.txt"
+		exit 1
+	fi
+fi
+
 
 # Path check.
 if [ ! -f path.sh ]; then
@@ -96,7 +105,7 @@ if [ $model_name == "krs" ]; then
 	[[ -d $sdata && tmp/trans_data/feats.scp -ot $sdata ]] || split_data.sh tmp/trans_data $nj
 	feats="ark,s,cs:apply-cmvn $cmvn_opts --utt2spk=ark:$sdata/JOB/utt2spk scp:$sdata/JOB/cmvn.scp scp:$sdata/JOB/feats.scp ark:- | splice-feats $splice_opts ark:- ark:- | transform-feats $model_dir/final.mat ark:- ark:- |"
 
-elif [ $model_name == "mz" ]; then
+elif [ $model_name == "diy" ]; then
 
 	num_threads=1
 	thread_string=
@@ -105,23 +114,6 @@ elif [ $model_name == "mz" ]; then
 	min_active=200
 	beam=30.0 # 15.0
 	lattice_beam=16.0 # 8.0
-	acwt=0.1
-	model=$model_dir/final.mdl
-	cmvn_opts=
-	splice_opts=
-	sdata=tmp/trans_data/split$nj
-	[[ -d $sdata && tmp/trans_data/feats.scp -ot $sdata ]] || split_data.sh tmp/trans_data $nj
-	feats="ark,s,cs:apply-cmvn $cmvn_opts --utt2spk=ark:$sdata/JOB/utt2spk scp:$sdata/JOB/cmvn.scp scp:$sdata/JOB/feats.scp ark:- | splice-feats $splice_opts ark:- ark:- | transform-feats $model_dir/final.mat ark:- ark:- |"
-
-elif [ $model_name == "sj" ]; then
-
-	num_threads=1
-	thread_string=
-	minimize=false
-	max_active=7000
-	min_active=200
-	beam=30.0 # 15.0
-	lattice_beam=25.0 # 8.0
 	acwt=0.1
 	model=$model_dir/final.mdl
 	cmvn_opts=
