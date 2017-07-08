@@ -7,16 +7,22 @@ To run this program, kaldi should be installed on your computer.
 ---
 1. **Install Kaldi**
 	- Type below in command line.
-	- $ git clone https://github.com/kaldi-asr/kaldi.git kaldi --origin upstream
-	- $ cd kaldi
-	- $ git pull 
+	
+		```
+		$ git clone https://github.com/kaldi-asr/kaldi.git kaldi --origin upstream
+		$ cd kaldi
+		$ git pull 
+		```
 	- Read INSTALL and follow the direction written there.
 
 2. **Install Packages**
 	- Install list: Sox, coreutils.
 	-  On mac
-	- $ brew install sox
-	- $ brew install coreutils
+	
+		```
+		$ brew install sox
+		$ brew install coreutils
+		```
 
 ### DIRECTION
 ---
@@ -27,12 +33,18 @@ To run this program, kaldi should be installed on your computer.
 3. Run the code by selecting krs model.
 	- krs(korean readspeech) model is already provided.
 	- example: 
-		- $ sh run_asr.sh (language model)
-		- $ sh run_asr.sh krs
+	
+		```
+		$ sh run_asr.sh (language model)
+		$ sh run_asr.sh krs
+		```
 4. You may see the recording status on the screen. Speak any sentence and stop recording by pressing Control + C.
 4. Speech recognition process will be automatically initiated and a text result will be printed on the screen.
 5. You can decode with your own trained model by adding it into ./models/diy directory if you prepared four files(final.mdl, final.mat, HCLG.fst, and words.txt) trained by train_tanh_fast.sh(refer to the kadli_recipe/k1 script in my github) you are able to collect those files. Once you located above files to the ./models/diy folder, type as below.
-	- $ sh run_asr.sh diy
+
+	```
+	$ sh run_asr.sh diy
+	```
 
 ### CONTACTS
 ---
