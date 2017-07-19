@@ -30,6 +30,8 @@
 1. Navigate to 'Korean_ASR' directory.
 2. Open run_asr.sh with any text editor to specify user path of kaldi directory.
 	- Change 'kaldi' name variable. (initial setting: kaldi=/home/kaldi)
+	- When starting the ASR code at the first time, make sure that path.sh is not presented. Remove path.sh if it exists in your directory. 
+	- path.sh will be written automatically, when the ASR code is run at the first time. Remove path.sh if you run the ASR code without changing kaldi path before running it, because paht.sh might be holding wrong kaldi path information and it will occur errors repeatedly after then.
 3. Run the code by selecting krs model.
 	- krs(korean readspeech) model is already provided.
 	- example: 

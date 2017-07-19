@@ -37,7 +37,7 @@ else
 	echo "Provided models are as follows: " 
 	echo "1. krs : Trained model based on Korean Readspeech corpus."
 	echo "2. diy : Trained model based on your own corpus."
- && exit 1
+ 	exit 1
 fi
 # model directory
 model_dir=models/$model_name
@@ -53,8 +53,9 @@ fi
 
 # Path check.
 if [ ! -f path.sh ]; then
-bash local/make_path.sh $kaldi; fi
-source path.sh
+	bash local/make_path.sh $kaldi
+	source path.sh; fi
+
 [ ! -d data ] && mkdir data
 [ -d tmp ] && rm -rf tmp
 [ -f data/* ] && rm data/*
