@@ -51,10 +51,8 @@ if [ $model_name == "diy" ]; then
 fi
 
 
-# Path check.
-if [ ! -f path.sh ]; then
-	bash local/make_path.sh $kaldi
-	source path.sh; fi
+# Path setting.
+. path.sh $kaldi
 
 [ ! -d data ] && mkdir data
 [ -d tmp ] && rm -rf tmp
