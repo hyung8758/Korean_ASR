@@ -65,7 +65,7 @@ mkdir -p tmp/mfcc
 
 # Recording sound.
 echo "Start recording..."
-rec -c 1 -r 16000 ./data/test01.wav # silence 1 0.1 1% 1 1.5 1% 
+rec -b 16 -c 1 -r 16000 ./data/test01.wav # silence 1 0.1 1% 1 1.5 1% 
 
 # Preprocessing
 # Generate wav.scp, utt2spk, spk2utt
