@@ -1,6 +1,6 @@
 # Korean_ASR: Korean Automatic Speech Recognition  
 
-- It is working on Mac(El Capitan) and Ubuntu(14.04).
+- It is working on Mac(Catalina 10.15.7) and Ubuntu(14.04).
 - To run this program, kaldi should be installed on your computer.
 
 ### PREREQUISITE
@@ -59,4 +59,5 @@ Please report bugs or provide any recommendation to us through the following ema
 - v.1.0(10/12/16): Two language models are available: krs and mz.
 - v.1.1(11/27/16): Minor updates for code optimization.
 - v.1.2(07/09/17): Remove some unimportant files. Implementing model is possible. Fix minor bugs.
-- **v.1.2.1(09/26/18): some update news were not synced. so the previous bugs are now synced. change readme and run_asr.sh.**
+- v.1.2.1(09/26/18): some update news were not synced. so the previous news are now synced. change readme and run_asr.sh.
+- v.1.3(11/13/20): diy option bug fixed. You may now use not only dnn model type but various model types. see models/README.md folder.
