@@ -60,4 +60,4 @@ Please report bugs or provide any recommendation to us through the following ema
 - v.1.1(11/27/16): Minor updates for code optimization.
 - v.1.2(07/09/17): Remove some unimportant files. Implementing model is possible. Fix minor bugs.
 - v.1.2.1(09/26/18): some update news were not synced. so the previous news are now synced. change readme and run_asr.sh.
-- v.1.3(11/13/20): diy option bug fixed. You may now use not only dnn model type but various model types. see models/README.md folder.
+- **v.1.3(11/13/20): diy option bug fixed. You may now use not only dnn model type but various model types. see models/README.md folder.**
