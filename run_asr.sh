@@ -9,7 +9,7 @@
 
 
 # Kaldi directory ./kaldi
-kaldi=/Users/yanghyungwon/kaldi
+kaldi=/home/kaldi
 # FA data directory
 data_dir=data
 # result direcotry

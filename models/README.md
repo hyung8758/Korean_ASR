@@ -1,5 +1,6 @@
 # diy usage
-### Hyungwon Yang
+- Hyungwon Yang
+- 11.12.2020
 
 ### Instruction.
 1. If you have your own corpus and want to train an ASR model with it, please use kaldi_tutorial script in my github.
